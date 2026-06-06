@@ -313,10 +313,12 @@ c:1
 ];
 
 let i=0,xp=0,timer;
-
+let playerName="";
+  
 function start(){
 
-q.sort(() => Math.random() - 0.5);
+playerName =
+document.getElementById("name").value || "Anonymous";
 
 document.getElementById("start").classList.add("hidden");
 document.getElementById("quiz").classList.remove("hidden");
@@ -402,7 +404,11 @@ save(rank);
 
 function save(rank){
 let board=JSON.parse(localStorage.getItem("mgot"))||[];
-board.push({name:"Player",xp:xp,rank:rank});
+board.push({
+name:playerName,
+xp:xp,
+rank:rank
+});
 board.sort((a,b)=>b.xp-a.xp);
 localStorage.setItem("mgot",JSON.stringify(board));
 render();
