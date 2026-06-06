@@ -218,7 +218,6 @@ to{opacity:1;transform:translateY(0);}
 <script>
 
 
-const q=[
 const q = [
 
 {
@@ -316,8 +315,12 @@ c:1
 let i=0,xp=0,timer;
 
 function start(){
+
+q.sort(() => Math.random() - 0.5);
+
 document.getElementById("start").classList.add("hidden");
 document.getElementById("quiz").classList.remove("hidden");
+
 load();
 }
 
