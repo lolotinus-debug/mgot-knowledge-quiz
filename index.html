@@ -178,6 +178,28 @@ to{opacity:1;transform:translateY(0);}
 <div id="start" class="card">
 <h2>Enter your name</h2>
 <input id="name" placeholder="Your name">
+<select id="category"
+style="
+width:100%;
+padding:12px;
+margin-top:15px;
+border:none;
+border-radius:12px;
+background:#0f172a;
+color:white;
+">
+
+<option value="All">All Categories</option>
+<option value="Science">Science</option>
+<option value="Geography">Geography</option>
+<option value="Technology">Technology</option>
+<option value="Psychology">Psychology</option>
+<option value="Health">Health</option>
+<option value="Food">Food</option>
+<option value="Art">Art</option>
+<option value="Culture">Culture</option>
+
+</select>
 <button onclick="start()">Start Quiz</button>
 </div>
 
@@ -383,18 +405,29 @@ c:2
 let i=0,xp=0,timer;
 let playerName="";
 let gameQuestions=[];
+let selectedCategory="All";
   
 function start(){
 
 playerName =
 document.getElementById("name").value || "Anonymous";
+selectedCategory =
+document.getElementById("category").value;  
 
 document.getElementById("start").classList.add("hidden");
 document.getElementById("quiz").classList.remove("hidden");
 
-q.sort(() => Math.random() - 0.5);
+let pool=q;
 
-gameQuestions = q.slice(0,20);
+if(selectedCategory!=="All"){
+pool=q.filter(
+question=>question.cat===selectedCategory
+);
+}
+
+pool.sort(() => Math.random() - 0.5);
+
+gameQuestions=pool.slice(0,20);
 
 load();
 }
