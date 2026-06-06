@@ -1,0 +1,171 @@
+const questions = [
+{
+question: "What does MGOT stand for?",
+answers: [
+"Mindset Growth Optimization Token",
+"Market Growth Online Token",
+"Modern Global Opportunity Token",
+"Meta Growth Organization Token"
+],
+correct: 0
+},
+{
+question: "Which blockchain is MGOT built on?",
+answers: [
+"Ethereum",
+"Solana",
+"BNB Chain",
+"Polygon"
+],
+correct: 1
+},
+{
+question: "What is the main goal of MGOT?",
+answers: [
+"Quick profits",
+"Building mindset and community",
+"NFT trading",
+"Gaming"
+],
+correct: 1
+}
+];
+
+let currentQuestion = 0;
+let xp = 0;
+
+function loadQuestion() {
+
+const q = questions[currentQuestion];
+
+document.getElementById("question").innerText =
+q.question;
+
+const answersDiv =
+document.getElementById("answers");
+
+answersDiv.innerHTML = "";
+
+q.answers.forEach((answer,index)=>{
+
+const btn =
+document.createElement("button");
+
+btn.className = "answer-btn";
+
+btn.innerText = answer;
+
+btn.onclick = () => checkAnswer(index);
+
+answersDiv.appendChild(btn);
+
+});
+
+document.getElementById("progress").innerText =
+`${currentQuestion + 1}/${questions.length}`;
+
+}
+
+function checkAnswer(index){
+
+if(index === questions[currentQuestion].correct){
+
+xp += 10;
+
+document.getElementById("xp").innerText = xp;
+
+alert("Correct! +10 XP");
+
+}else{
+
+alert("Wrong answer");
+
+}
+
+currentQuestion++;
+
+if(currentQuestion < questions.length){
+
+loadQuestion();
+
+}else{
+
+finishQuiz();
+
+}
+
+}
+
+function finishQuiz(){
+
+let rank = "Beginner";
+
+if(xp >= 20) rank = "Supporter";
+if(xp >= 50) rank = "Warrior";
+if(xp >= 80) rank = "Legend";
+
+document.getElementById("quiz").innerHTML = `
+<h2>Quiz Completed</h2>
+<p>Total XP: ${xp}</p>
+<p>Rank: ${rank}</p>
+`;
+
+saveScore(rank);
+
+}
+
+function saveScore(rank){
+
+const player =
+document.getElementById("playerName").value;
+
+let leaderboard =
+JSON.parse(localStorage.getItem("mgotLeaderboard")) || [];
+
+leaderboard.push({
+name: player,
+xp: xp,
+rank: rank
+});
+
+leaderboard.sort((a,b)=>b.xp-a.xp);
+
+localStorage.setItem(
+"mgotLeaderboard",
+JSON.stringify(leaderboard)
+);
+
+displayLeaderboard();
+
+}
+
+function displayLeaderboard(){
+
+const leaderboard =
+JSON.parse(localStorage.getItem("mgotLeaderboard")) || [];
+
+const board =
+document.getElementById("leaderboard");
+
+board.innerHTML = "";
+
+leaderboard.slice(0,10).forEach(player=>{
+
+board.innerHTML += `
+<li>
+${player.name}
+- ${player.xp} XP
+(${player.rank})
+</li>
+`;
+
+});
+
+}
+
+window.onload = () => {
+
+displayLeaderboard();
+loadQuestion();
+
+};
