@@ -247,6 +247,20 @@ color:white;
 <!-- LEADERBOARD -->
 <div class="card">
 <h2>🏆 Leaderboard</h2>
+
+<button onclick="clearBoard()" style="
+padding:10px 15px;
+margin-bottom:10px;
+border-radius:10px;
+background:#dc2626;
+color:white;
+border:none;
+cursor:pointer;
+font-weight:700;
+">
+Reset Leaderboard
+</button>
+
 <ul id="board"></ul>
 </div>
 
@@ -2071,6 +2085,11 @@ localStorage.setItem("mgot",JSON.stringify(board));
 render();
 }
 
+function clearBoard(){
+localStorage.removeItem("mgot");
+render();
+}  
+  
 function render(){
 let board=JSON.parse(localStorage.getItem("mgot"))||[];
 let list=document.getElementById("board");
