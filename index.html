@@ -382,6 +382,7 @@ c:2
 
 let i=0,xp=0,timer;
 let playerName="";
+let gameQuestions=[];
   
 function start(){
 
@@ -392,6 +393,8 @@ document.getElementById("start").classList.add("hidden");
 document.getElementById("quiz").classList.remove("hidden");
 
 q.sort(() => Math.random() - 0.5);
+
+gameQuestions = q.slice(0,20);
 
 load();
 }
@@ -407,7 +410,7 @@ document.getElementById("time").innerText=time;
 if(time<=0){next();}
 },1000);
 
-let cur=q[i];
+let cur=gameQuestions[i];
 document.getElementById("question").innerHTML =
 `<div style="font-size:14px;color:#22c55e;margin-bottom:8px">
 ${cur.cat}
@@ -424,8 +427,7 @@ b.onclick=()=>check(idx);
 box.appendChild(b);
 });
 
-document.getElementById("progress").style.width=((i+1)/q.length)*100+"%";
-}
+document.getElementById("progress").style.width=((i+1)/gameQuestions.length)*100+"%";}
 
 function check(idx){
 clearInterval(timer);
@@ -433,24 +435,21 @@ let buttons=document.querySelectorAll(".answers button");
 
 buttons.forEach(b=>b.disabled=true);
 
-if(idx===q[i].c){
-document.getElementById("correct").play();
+if(idx===gameQuestions[i].c){document.getElementById("correct").play();
 buttons[idx].classList.add("correct");
 xp+=10;
 document.getElementById("xp").innerText=xp;
 }else{
 document.getElementById("wrong").play();
 buttons[idx].classList.add("wrong");
-buttons[q[i].c].classList.add("correct");
-}
+buttons[gameQuestions[i].c].classList.add("correct");}
 
 setTimeout(next,800);
 }
 
 function next(){
 i++;
-if(i>=q.length)finish();
-else load();
+if(i>=gameQuestions.length)finish();else load();
 }
 
 function finish(){
