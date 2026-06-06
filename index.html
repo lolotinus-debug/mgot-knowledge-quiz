@@ -3,80 +3,371 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MGOT Knowledge Quiz Pro</title>
+
+<title>MGOT Quiz Pro</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 
-/* CSS BUDE V PART 2 */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-</style>
+body{
+background:#020617;
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+position:relative;
+}
 
-</head>
-<body>
+/* BACKGROUND */
 
-<div class="background-glow"></div>
+.background-glow{
+position:fixed;
+width:900px;
+height:900px;
+border-radius:50%;
+background:radial-gradient(
+circle,
+rgba(34,197,94,.25),
+transparent 70%
+);
+top:-300px;
+left:-200px;
+filter:blur(80px);
+z-index:-1;
+}
 
-<header>
-<h1>🧠 MGOT Knowledge Quiz</h1>
-<p>Mindset Growth Optimization Token</p>
-</header>
+.background-glow::after{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+right:-500px;
+bottom:-500px;
+border-radius:50%;
+background:radial-gradient(
+circle,
+rgba(59,130,246,.20),
+transparent 70%
+);
+filter:blur(80px);
+}
 
-<div id="startScreen" class="card">
+/* HEADER */
 
-<h2>Welcome Warrior ⚡</h2>
+header{
+text-align:center;
+padding:40px 20px;
+}
 
-<input
-type="text"
-id="playerName"
-placeholder="Enter your name">
+header h1{
+font-size:3rem;
+font-weight:800;
+margin-bottom:10px;
+}
 
-<button onclick="startQuiz()">
-Start Quiz
-</button>
+header p{
+opacity:.8;
+font-size:1.1rem;
+}
 
-</div>
+/* CARDS */
 
-<div id="quizScreen" class="card hidden">
+.card{
+width:95%;
+max-width:850px;
+margin:20px auto;
+padding:30px;
+background:rgba(15,23,42,.95);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+backdrop-filter:blur(12px);
+box-shadow:
+0 0 30px rgba(0,0,0,.35);
+animation:fadeIn .5s ease;
+}
 
-<div class="top-bar">
+.hidden{
+display:none;
+}
 
-<div>
-XP:
-<span id="xp">0</span>
-</div>
+/* START SCREEN */
 
-<div>
-Rank:
-<span id="rank">Beginner</span>
-</div>
+#playerName{
+width:100%;
+padding:15px;
+margin-top:20px;
+border:none;
+border-radius:15px;
+background:#0f172a;
+color:white;
+font-size:1rem;
+outline:none;
+}
 
-<div>
-Time:
-<span id="timer">15</span>s
-</div>
+button{
+border:none;
+cursor:pointer;
+border-radius:15px;
+padding:15px 25px;
+font-size:1rem;
+font-weight:700;
+transition:.3s;
+}
 
-</div>
+button:hover{
+transform:translateY(-2px);
+}
 
-<div class="progress-container">
-<div id="progressBar"></div>
-</div>
+/* MAIN BUTTON */
 
-<h2 id="question">
-Question
-</h2>
+#startScreen button,
+#resultScreen button{
+margin-top:20px;
+width:100%;
+background:linear-gradient(
+45deg,
+#22c55e,
+#16a34a
+);
+color:white;
+}
 
-<div id="answers">
+/* TOP BAR */
 
-</div>
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
 
-</div>
+.top-bar div{
+background:#0f172a;
+padding:10px 15px;
+border-radius:12px;
+font-weight:700;
+}
 
+/* PROGRESS BAR */
+
+.progress-container{
+width:100%;
+height:14px;
+background:#0f172a;
+border-radius:999px;
+overflow:hidden;
+margin-bottom:25px;
+}
+
+#progressBar{
+width:0%;
+height:100%;
+background:linear-gradient(
+90deg,
+#22c55e,
+#3b82f6
+);
+transition:.4s;
+}
+/* QUESTION */
+
+#question{
+font-size:1.7rem;
+font-weight:700;
+margin-bottom:25px;
+text-align:center;
+line-height:1.5;
+}
+
+/* ANSWERS */
+
+#answers{
+display:grid;
+gap:15px;
+}
+
+.answer-btn{
+width:100%;
+padding:18px;
+font-size:1rem;
+font-weight:600;
+text-align:left;
+background:#0f172a;
+color:white;
+border:1px solid rgba(255,255,255,.08);
+border-radius:15px;
+cursor:pointer;
+transition:.25s;
+}
+
+.answer-btn:hover{
+transform:translateY(-3px);
+border-color:#22c55e;
+background:#13203b;
+}
+
+.correct{
+background:#15803d !important;
+border-color:#22c55e !important;
+}
+
+.wrong{
+background:#b91c1c !important;
+border-color:#ef4444 !important;
+}
+
+/* RESULT SCREEN */
+
+#resultScreen{
+text-align:center;
+}
+
+#resultScreen h2{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+#finalXP,
+#finalRank,
+#achievement{
+font-size:1.2rem;
+margin:12px 0;
+}
+
+/* ACHIEVEMENT */
+
+.badge{
+display:inline-block;
+padding:12px 20px;
+border-radius:999px;
+margin-top:15px;
+font-weight:700;
+background:linear-gradient(
+45deg,
+#f59e0b,
+#facc15
+);
+color:#111827;
+}
+
+/* LEADERBOARD */
+
+#leaderboard{
+margin-top:20px;
+padding-left:20px;
+}
+
+#leaderboard li{
+margin:12px 0;
+padding:12px;
+background:#0f172a;
+border-radius:12px;
+list-style-position:inside;
+}
+
+/* SCORE COLORS */
+
+.gold{
+color:#facc15;
+font-weight:700;
+}
+
+.silver{
+color:#d1d5db;
+font-weight:700;
+}
+
+.bronze{
+color:#d97706;
+font-weight:700;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.05);
+}
+100%{
+transform:scale(1);
+}
+}
+
+.pulse{
+animation:pulse .5s ease;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header h1{
+font-size:2rem;
+}
+
+#question{
+font-size:1.3rem;
+}
+
+.card{
+padding:20px;
+}
+
+.answer-btn{
+padding:15px;
+font-size:.95rem;
+}
+
+.top-bar{
+flex-direction:column;
+align-items:stretch;
+}
+
+.top-bar div{
+text-align:center;
+}
+
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+opacity:.6;
+font-size:.9rem;
+}
+
+</style>  
 <div id="resultScreen" class="card hidden">
 
-<h2>Quiz Finished 🎉</h2>
+<h2>🎉 Quiz Finished</h2>
 
 <p id="finalXP"></p>
 
@@ -85,111 +376,307 @@ Question
 <p id="achievement"></p>
 
 <button onclick="restartQuiz()">
-Play Again
+🔄 Play Again
 </button>
 
 </div>
 
 <div class="card">
 
-<h2>🏆 Leaderboard</h2>
+<h2>🏆 Top Warriors</h2>
 
-<ol id="leaderboard">
-
-</ol>
+<ol id="leaderboard"></ol>
 
 </div>
 
+<footer>
+MGOT Quiz Pro • Mindset Growth Optimization Token
+</footer>
+
+<!-- ZVUKY -->
+
+<audio id="correctSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="wrongSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2955/2955-preview.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+  const questions = [
 
-/* JAVASCRIPT BUDE V PART 3 + 4 */
-
-</script>
-
-
-const questions = [
 {
-question: "What does MGOT stand for?",
-answers: [
+question:"What does MGOT stand for?",
+answers:[
 "Mindset Growth Optimization Token",
 "Market Growth Online Token",
-"Modern Global Opportunity Token",
+"Modern Growth Opportunity Token",
 "Meta Growth Organization Token"
 ],
-correct: 0
+correct:0
 },
+
 {
-question: "Which blockchain is MGOT built on?",
-answers: [
+question:"Which blockchain is MGOT built on?",
+answers:[
 "Ethereum",
 "Solana",
 "BNB Chain",
 "Polygon"
 ],
-correct: 1
+correct:1
 },
-{
-question: "What is the main goal of MGOT?",
-answers: [
-"Quick profits",
-"Building mindset and community",
-"NFT trading",
-"Gaming"
-],
-correct: 1
-}
-];
 
+{
+question:"What is the main mission of MGOT?",
+answers:[
+"Pump and dump",
+"Building mindset and community",
+"NFT flipping",
+"Gaming only"
+],
+correct:1
+},
+
+{
+question:"What does a correct answer reward?",
+answers:[
+"5 XP",
+"10 XP",
+"20 XP",
+"50 XP"
+],
+correct:1
+},
+
+{
+question:"MGOT focuses on?",
+answers:[
+"Growth",
+"Education",
+"Mindset",
+"All of the above"
+],
+correct:3
+},
+
+{
+question:"Which rank comes after Beginner?",
+answers:[
+"Legend",
+"Supporter",
+"Master",
+"Elite"
+],
+correct:1
+},
+
+{
+question:"How many XP are needed for Warrior rank?",
+answers:[
+"20",
+"40",
+"60",
+"100"
+],
+correct:1
+},
+
+{
+question:"Which rank is the highest?",
+answers:[
+"Supporter",
+"Warrior",
+"Legend",
+"Master"
+],
+correct:3
+},
+
+{
+question:"MGOT community values?",
+answers:[
+"Learning",
+"Discipline",
+"Consistency",
+"All of the above"
+],
+correct:3
+},
+
+{
+question:"What color is most associated with MGOT branding?",
+answers:[
+"Green",
+"Purple",
+"Orange",
+"Pink"
+],
+correct:0
+},
+
+{
+question:"What is more important in MGOT?",
+answers:[
+"Mindset",
+"Luck",
+"Hype",
+"Spam"
+],
+correct:0
+},
+
+{
+question:"MGOT promotes?",
+answers:[
+"Organic growth",
+"Fake volume",
+"Bots",
+"Scams"
+],
+correct:0
+},
+
+{
+question:"What is the purpose of XP?",
+answers:[
+"Track progress",
+"Buy tokens",
+"Mine crypto",
+"Stake NFTs"
+],
+correct:0
+},
+
+{
+question:"Community strength comes from?",
+answers:[
+"Teamwork",
+"Fear",
+"Spam",
+"Manipulation"
+],
+correct:0
+},
+
+{
+question:"A Warrior should be?",
+answers:[
+"Disciplined",
+"Lazy",
+"Negative",
+"Silent"
+],
+correct:0
+},
+
+{
+question:"MGOT encourages?",
+answers:[
+"Growth mindset",
+"Complaining",
+"Quitting",
+"Fear"
+],
+correct:0
+},
+
+{
+question:"What helps long-term success?",
+answers:[
+"Consistency",
+"Luck",
+"Spam",
+"FOMO"
+],
+correct:0
+},
+
+{
+question:"What should community members do?",
+answers:[
+"Support each other",
+"Attack others",
+"Spread hate",
+"Ignore everyone"
+],
+correct:0
+},
+
+{
+question:"MGOT is primarily a?",
+answers:[
+"Community project",
+"Casino",
+"Lottery",
+"Exchange"
+],
+correct:0
+},
+
+{
+question:"Final Warrior Question: Are you ready to grow?",
+answers:[
+"Absolutely",
+"Yes",
+"Definitely",
+"All answers"
+],
+correct:3
+}
+
+];
 let currentQuestion = 0;
 let xp = 0;
+let timeLeft = 15;
+let timer;
 
-function loadQuestion() {
+function startQuiz(){
 
-const q = questions[currentQuestion];
+const player =
+document.getElementById("playerName")
+.value.trim();
 
-document.getElementById("question").innerText =
-q.question;
+if(player === ""){
 
-const answersDiv =
-document.getElementById("answers");
-
-answersDiv.innerHTML = "";
-
-q.answers.forEach((answer,index)=>{
-
-const btn =
-document.createElement("button");
-
-btn.className = "answer-btn";
-
-btn.innerText = answer;
-
-btn.onclick = () => checkAnswer(index);
-
-answersDiv.appendChild(btn);
-
-});
-
-document.getElementById("progress").innerText =
-`${currentQuestion + 1}/${questions.length}`;
+alert("Enter your name");
+return;
 
 }
 
-function checkAnswer(index){
+document
+.getElementById("startScreen")
+.classList.add("hidden");
 
-if(index === questions[currentQuestion].correct){
+document
+.getElementById("quizScreen")
+.classList.remove("hidden");
 
-xp += 10;
+loadQuestion();
 
-document.getElementById("xp").innerText = xp;
+}  
+/* LOAD QUESTION */
 
-alert("Correct! +10 XP");
+function loadQuestion(){
 
-}else{
+clearInterval(timer);
 
-alert("Wrong answer");
+timeLeft = 15;
 
-}
+document.getElementById("timer")
+.innerText = timeLeft;
+
+timer = setInterval(()=>{
+
+timeLeft--;
+
+document.getElementById("timer")
+.innerText = timeLeft;
+
+if(timeLeft <= 0){
+
+clearInterval(timer);
 
 currentQuestion++;
 
@@ -205,39 +692,248 @@ finishQuiz();
 
 }
 
-function finishQuiz(){
+},1000);
+
+const q = questions[currentQuestion];
+
+document.getElementById("question")
+.innerText = q.question;
+
+const answersDiv =
+document.getElementById("answers");
+
+answersDiv.innerHTML = "";
+
+q.answers.forEach((answer,index)=>{
+
+const btn =
+document.createElement("button");
+
+btn.className = "answer-btn";
+
+btn.innerText = answer;
+
+btn.onclick = ()=>checkAnswer(index);
+
+answersDiv.appendChild(btn);
+
+});
+
+updateProgress();
+
+}
+
+/* CHECK ANSWER */
+
+function checkAnswer(index){
+
+clearInterval(timer);
+
+const buttons =
+document.querySelectorAll(".answer-btn");
+
+buttons.forEach(btn=>{
+
+btn.disabled = true;
+
+});
+
+if(index === questions[currentQuestion].correct){
+
+document
+.getElementById("correctSound")
+.play();
+
+buttons[index]
+.classList.add("correct");
+
+xp += 10;
+
+document.getElementById("xp")
+.innerText = xp;
+
+document.getElementById("xp")
+.parentElement.classList.add("pulse");
+
+setTimeout(()=>{
+
+document.getElementById("xp")
+.parentElement.classList.remove("pulse");
+
+},500);
+
+}else{
+
+document
+.getElementById("wrongSound")
+.play();
+
+buttons[index]
+.classList.add("wrong");
+
+buttons[
+questions[currentQuestion].correct
+]
+.classList.add("correct");
+
+}
+
+updateRank();
+
+setTimeout(()=>{
+
+currentQuestion++;
+
+if(currentQuestion < questions.length){
+
+loadQuestion();
+
+}else{
+
+finishQuiz();
+
+}
+
+},1200);
+
+}
+
+/* RANK */
+
+function updateRank(){
 
 let rank = "Beginner";
 
-if(xp >= 20) rank = "Supporter";
-if(xp >= 50) rank = "Warrior";
-if(xp >= 80) rank = "Legend";
+if(xp >= 40)
+rank = "Supporter";
 
-document.getElementById("quiz").innerHTML = `
-<h2>Quiz Completed</h2>
-<p>Total XP: ${xp}</p>
-<p>Rank: ${rank}</p>
-`;
+if(xp >= 80)
+rank = "Warrior";
+
+if(xp >= 120)
+rank = "Legend";
+
+if(xp >= 180)
+rank = "Master";
+
+document
+.getElementById("rank")
+.innerText = rank;
+
+}
+
+/* PROGRESS */
+
+function updateProgress(){
+
+const percent =
+((currentQuestion + 1)
+/ questions.length) * 100;
+
+document
+.getElementById("progressBar")
+.style.width =
+percent + "%";
+
+}
+
+/* FINISH */
+
+function finishQuiz(){
+
+clearInterval(timer);
+
+document
+.getElementById("quizScreen")
+.classList.add("hidden");
+
+document
+.getElementById("resultScreen")
+.classList.remove("hidden");
+
+let rank = "Beginner";
+let achievement = "🌱 New Recruit";
+
+if(xp >= 40){
+
+rank = "Supporter";
+achievement =
+"🔥 Community Supporter";
+
+}
+
+if(xp >= 80){
+
+rank = "Warrior";
+achievement =
+"⚔️ MGOT Warrior";
+
+}
+
+if(xp >= 120){
+
+rank = "Legend";
+achievement =
+"👑 MGOT Legend";
+
+}
+
+if(xp >= 180){
+
+rank = "Master";
+achievement =
+"💎 MGOT Master";
+
+}
+
+document
+.getElementById("finalXP")
+.innerHTML =
+`<strong>Total XP:</strong> ${xp}`;
+
+document
+.getElementById("finalRank")
+.innerHTML =
+`<strong>Rank:</strong> ${rank}`;
+
+document
+.getElementById("achievement")
+.innerHTML =
+`<span class="badge">${achievement}</span>`;
 
 saveScore(rank);
 
 }
 
+/* SAVE SCORE */
+
 function saveScore(rank){
 
 const player =
-document.getElementById("playerName").value;
+document.getElementById("playerName")
+.value;
 
 let leaderboard =
-JSON.parse(localStorage.getItem("mgotLeaderboard")) || [];
+JSON.parse(
+localStorage.getItem(
+"mgotLeaderboard"
+)
+) || [];
 
 leaderboard.push({
-name: player,
-xp: xp,
-rank: rank
+
+name:player,
+xp:xp,
+rank:rank
+
 });
 
-leaderboard.sort((a,b)=>b.xp-a.xp);
+leaderboard.sort(
+(a,b)=>b.xp-a.xp
+);
+
+leaderboard =
+leaderboard.slice(0,10);
 
 localStorage.setItem(
 "mgotLeaderboard",
@@ -248,21 +944,39 @@ displayLeaderboard();
 
 }
 
-function displayLeaderboard(){
+/* LEADERBOARD */
 
-const leaderboard =
-JSON.parse(localStorage.getItem("mgotLeaderboard")) || [];
+function displayLeaderboard(){
 
 const board =
 document.getElementById("leaderboard");
 
+const leaderboard =
+JSON.parse(
+localStorage.getItem(
+"mgotLeaderboard"
+)
+) || [];
+
 board.innerHTML = "";
 
-leaderboard.slice(0,10).forEach(player=>{
+leaderboard.forEach((player,index)=>{
+
+let medal = "";
+
+if(index === 0)
+medal = "🥇";
+
+else if(index === 1)
+medal = "🥈";
+
+else if(index === 2)
+medal = "🥉";
 
 board.innerHTML += `
 <li>
-${player.name}
+${medal}
+<strong>${player.name}</strong>
 - ${player.xp} XP
 (${player.rank})
 </li>
@@ -272,12 +986,41 @@ ${player.name}
 
 }
 
-window.onload = () => {
+/* RESTART */
 
-displayLeaderboard();
+function restartQuiz(){
+
+currentQuestion = 0;
+xp = 0;
+
+document
+.getElementById("xp")
+.innerText = "0";
+
+document
+.getElementById("rank")
+.innerText = "Beginner";
+
+document
+.getElementById("resultScreen")
+.classList.add("hidden");
+
+document
+.getElementById("quizScreen")
+.classList.remove("hidden");
+
 loadQuestion();
 
-};
-  </body>
-</html>
+}
 
+/* INIT */
+
+window.onload = ()=>{
+
+displayLeaderboard();
+
+};  
+</script>
+
+</body>
+</html>
