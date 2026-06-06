@@ -1,3 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MGOT Knowledge Quiz Pro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+/* CSS BUDE V PART 2 */
+
+</style>
+
+</head>
+<body>
+
+<div class="background-glow"></div>
+
+<header>
+<h1>🧠 MGOT Knowledge Quiz</h1>
+<p>Mindset Growth Optimization Token</p>
+</header>
+
+<div id="startScreen" class="card">
+
+<h2>Welcome Warrior ⚡</h2>
+
+<input
+type="text"
+id="playerName"
+placeholder="Enter your name">
+
+<button onclick="startQuiz()">
+Start Quiz
+</button>
+
+</div>
+
+<div id="quizScreen" class="card hidden">
+
+<div class="top-bar">
+
+<div>
+XP:
+<span id="xp">0</span>
+</div>
+
+<div>
+Rank:
+<span id="rank">Beginner</span>
+</div>
+
+<div>
+Time:
+<span id="timer">15</span>s
+</div>
+
+</div>
+
+<div class="progress-container">
+<div id="progressBar"></div>
+</div>
+
+<h2 id="question">
+Question
+</h2>
+
+<div id="answers">
+
+</div>
+
+</div>
+
+<div id="resultScreen" class="card hidden">
+
+<h2>Quiz Finished 🎉</h2>
+
+<p id="finalXP"></p>
+
+<p id="finalRank"></p>
+
+<p id="achievement"></p>
+
+<button onclick="restartQuiz()">
+Play Again
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>🏆 Leaderboard</h2>
+
+<ol id="leaderboard">
+
+</ol>
+
+</div>
+
+<script>
+
+/* JAVASCRIPT BUDE V PART 3 + 4 */
+
+</script>
+
+
 const questions = [
 {
 question: "What does MGOT stand for?",
@@ -169,3 +278,6 @@ displayLeaderboard();
 loadQuestion();
 
 };
+  </body>
+</html>
+
