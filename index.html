@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MGOT knowledge Quiz</title>
 
-<link rel="icon" href="logo.png" type="image/png">  
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -173,13 +172,13 @@ to{opacity:1;transform:translateY(0);}
 <header>
 
 <div style="text-align:center; margin-bottom:10px;">
-  <img src="logo.png" alt="MGOT Logo"
-  style="
-    width:140px;
-    height:auto;
-    filter: drop-shadow(0 0 15px #22c55e);
-    animation: glowPulse 2s infinite;
-  ">
+<img src="logo.png" alt="MGOT Logo"
+style="
+width:140px;
+height:auto;
+filter: drop-shadow(0 0 15px #22c55e);
+animation: glowPulse 2s infinite;
+">
 </div>
 
 <h1>MGOT KNOWLEDGE QUIZ</h1>
@@ -203,7 +202,6 @@ color:white;
 ">
 
 <option value="All">All Categories</option>
-<option value="MGOT">MGOT</option>
 <option value="Science">Science</option>
 <option value="Geography">Geography</option>
 <option value="Technology">Technology</option>
@@ -227,10 +225,9 @@ color:white;
 <div class="top">
 <div>XP: <span id="xp">0</span></div>
 <div>Rank: <span id="rank">Beginner</span></div>
-<div>Question: <span id="counter">1/20</span></div>
 <div>Time: <span id="time">15</span></div>
 </div>
-  
+
 <div class="bar"><div id="progress"></div></div>
 
 <h2 id="question"></h2>
@@ -245,25 +242,13 @@ color:white;
 <p>Rank: <span id="finalRank"></span></p>
 <div id="badge" class="badge"></div>
 <button onclick="restart()">Play Again</button>
-
-<button onclick="shareResult()" style="
-margin-top:10px;
-background:#22c55e;
-color:white;
-">
-Share Score
-</button>
 </div>
 
 <!-- LEADERBOARD -->
 <div class="card">
 <h2>🏆 Leaderboard</h2>
 
-<button
-id="resetBtn"
-onclick="clearBoard()"
-style="
-display:none;
+<button onclick="clearBoard()" style="
 padding:10px 15px;
 margin-bottom:10px;
 border-radius:10px;
@@ -297,234 +282,6 @@ a:[
 "Market Growth Operation"
 ],
 c:0
-},
-
-{
-cat:"MGOT",
-q:"What is MGOT primarily focused on?",
-a:[
-"Gaming consoles",
-"Mindset, growth and education",
-"Social media marketing only",
-"Hardware manufacturing"
-],
-c:1
-},
-
-{
-cat:"MGOT",
-q:"What is the core idea behind MGOT?",
-a:[
-"Trading physical goods",
-"Streaming entertainment",
-"Improving mindset and knowledge",
-"Creating video games only"
-],
-c:2
-},
-
-{
-cat:"MGOT",
-q:"Which category best describes MGOT?",
-a:[
-"E-commerce platform",
-"Streaming service",
-"Hardware brand",
-"Educational and mindset ecosystem"
-],
-c:3
-},
-
-{
-cat:"MGOT",
-q:"What does MGOT aim to improve the most?",
-a:[
-"Thinking and personal growth",
-"Fast food industry",
-"Car manufacturing",
-"Sports performance only"
-],
-c:0
-},
-
-{
-cat:"MGOT",
-q:"MGOT is best described as:",
-a:[
-"A bank",
-"A mindset and growth project",
-"A gaming console",
-"A social media app"
-],
-c:1
-},
-
-{
-cat:"MGOT",
-q:"What is a key value of MGOT?",
-a:[
-"Luck-based gambling",
-"Random entertainment",
-"Education and improvement",
-"Hardware sales"
-],
-c:2
-},
-
-{
-cat:"MGOT",
-q:"What does MGOT encourage users to build?",
-a:[
-"Debt and spending",
-"Random guessing",
-"Physical strength only",
-"Knowledge and discipline"
-],
-c:3
-},
-
-{
-cat:"MGOT",
-q:"What is the purpose of MGOT quizzes?",
-a:[
-"Learning and mindset growth",
-"Entertainment only",
-"Buying products",
-"Social ranking only"
-],
-c:0
-},
-
-{
-cat:"MGOT",
-q:"Which idea is closest to MGOT philosophy?",
-a:[
-"Quick money schemes",
-"Continuous self-improvement",
-"Passive scrolling",
-"Random luck wins"
-],
-c:1
-},
-
-{
-cat:"MGOT",
-q:"MGOT is mainly about:",
-a:[
-"Playing casino games",
-"Watching videos",
-"Building a growth mindset",
-"Collecting items"
-],
-c:2
-},
-
-{
-cat:"MGOT",
-q:"What type of users is MGOT aimed at?",
-a:[
-"Only professional traders",
-"Only gamers",
-"Only investors",
-"People who want to learn and grow"
-],
-c:3
-},
-
-{
-cat:"MGOT",
-q:"What is one goal of MGOT system?",
-a:[
-"Encourage learning habits",
-"Encourage gambling",
-"Encourage shopping",
-"Encourage inactivity"
-],
-c:0
-},
-
-{
-cat:"MGOT",
-q:"What makes MGOT different from entertainment apps?",
-a:[
-"It is only for videos",
-"It focuses on education and growth",
-"It is only for chatting",
-"It is only for shopping"
-],
-c:1
-},
-
-{
-cat:"MGOT",
-q:"MGOT promotes which type of thinking?",
-a:[
-"Random guessing",
-"Ignoring knowledge",
-"Critical and growth mindset",
-"Short-term thinking only"
-],
-c:2
-},
-
-{
-cat:"MGOT",
-q:"What is the long-term goal of MGOT users?",
-a:[
-"Fast profits only",
-"Entertainment consumption",
-"Gaming achievements only",
-"Personal improvement"
-],
-c:3
-},
-
-{
-cat:"MGOT",
-q:"MGOT is best categorized as:",
-a:[
-"Educational ecosystem",
-"Crypto exchange",
-"Social network",
-"Streaming platform"
-],
-c:0
-},
-
-{
-cat:"MGOT",
-q:"What does MGOT try to build in users?",
-a:[
-"Random habits",
-"Discipline and knowledge",
-"Addiction to games",
-"Passive behavior"
-],
-c:1
-},
-
-{
-cat:"MGOT",
-q:"Which statement best describes MGOT?",
-a:[
-"A lottery system",
-"A shopping website",
-"A mindset growth system",
-"A music platform"
-],
-c:2
-},
-
-{
-cat:"MGOT",
-q:"What is the philosophy behind MGOT?",
-a:[
-"Luck over skill",
-"Spending over learning",
-"Entertainment over education",
-"Growth through knowledge"
-],
-c:3
 },
 
 {
@@ -722,7 +479,7 @@ q:"What is the process by which plants make food?",
 a:["Respiration","Photosynthesis","Digestion","Fermentation"],
 c:1
 },
-  
+
 {
 cat:"Science",
 q:"What particle has a negative charge?",
@@ -946,7 +703,7 @@ a:["Systematic thinking error","Perfect logic","Memory loss","Dreaming"],
 c:0
 },
 
- {
+{
 cat:"Technology",
 q:"What does CPU stand for?",
 a:["Central Processing Unit","Computer Power Unit","Central Program Utility","Core Processing Utility"],
@@ -1084,7 +841,7 @@ cat:"Technology",
 q:"What does HTML stand for?",
 a:["HyperText Markup Language","HighText Machine Language","HyperTool Markup Language","Home Tool Markup Language"],
 c:0
-}, 
+},
 
 {
 cat:"Health",
@@ -2058,7 +1815,7 @@ q:"Which country is famous for saunas?",
 a:["Sweden","Norway","Finland","Iceland"],
 c:2
 },
-  
+
 {
 cat:"History",
 q:"Which empire built the Colosseum?",
@@ -2205,7 +1962,7 @@ q:"Which sport is played at Augusta National?",
 a:["Tennis","Golf","Cricket","Rugby"],
 c:1
 },
-  
+
 {
 cat:"Science",
 q:"What is the nearest star to Earth?",
@@ -2218,18 +1975,17 @@ let i=0,xp=0,timer;
 let playerName="";
 let gameQuestions=[];
 let selectedCategory="All";
-  
+
 function start(){
 
 playerName =
 document.getElementById("name").value || "Anonymous";
-
-if(playerName === "Pepelectric"){
-    document.getElementById("resetBtn").style.display = "block";
-}
-
 selectedCategory =
 document.getElementById("category").value;
+
+document.getElementById("start").classList.add("hidden");
+document.getElementById("quiz").classList.remove("hidden");
+
 let pool=q;
 
 if(selectedCategory!=="All"){
@@ -2258,11 +2014,10 @@ if(time<=0){next();}
 
 let cur=gameQuestions[i];
 document.getElementById("question").innerHTML =
-`<div style="font-size:14px;color:#22c55e;margin-bottom:8px">
-${cur.cat}
+<div style="font-size:14px;color:#22c55e;margin-bottom:8px"&gt; ${cur.cat}
 </div>
-${cur.q}`;
-  
+${cur.q};
+
 let box=document.getElementById("answers");
 box.innerHTML="";
 
@@ -2272,7 +2027,7 @@ b.innerText=x;
 b.onclick=()=>check(idx);
 box.appendChild(b);
 });
-document.getElementById("counter").innerText =`${i+1}/${gameQuestions.length}`;
+
 document.getElementById("progress").style.width=((i+1)/gameQuestions.length)*100+"%";}
 
 function check(idx){
@@ -2306,9 +2061,9 @@ document.getElementById("result").classList.remove("hidden");
 let rank="Beginner";
 let badge="Recruit";
 
-if(xp>=50){rank="Supporter";badge="🔥 Supporter";}
-if(xp>=120){rank="Warrior";badge="⚔️ Warrior";}
-if(xp>=180){rank="Legend";badge="👑 Legend";}
+if(xp>=30){rank="Supporter";badge="🔥 Supporter";}
+if(xp>=60){rank="Warrior";badge="⚔️ Warrior";}
+if(xp>=90){rank="Legend";badge="👑 Legend";}
 
 document.getElementById("finalXp").innerText=xp;
 document.getElementById("finalRank").innerText=rank;
@@ -2332,43 +2087,21 @@ render();
 function clearBoard(){
 localStorage.removeItem("mgot");
 render();
-}  
-  
+}
+
 function render(){
 let board=JSON.parse(localStorage.getItem("mgot"))||[];
 let list=document.getElementById("board");
 list.innerHTML="";
 board.slice(0,10).forEach(p=>{
-list.innerHTML+=`<li>${p.name} - ${p.xp} XP (${p.rank})</li>`;
+list.innerHTML+=<li&gt;${p.name} - ${p.xp} XP (${p.rank})&lt;/li>;
 });
 }
 
 function restart(){
 location.reload();
 }
-function shareResult(){
 
-const text =
-`I scored ${xp} XP in the MGOT Knowledge Quiz! 🚀
-
-Can you beat me?
-
-https://lolotinus-debug.github.io/mgot-knowledge-quiz/`;
-
-if(navigator.share){
-
-navigator.share({
-title:"MGOT Knowledge Quiz",
-text:text
-});
-
-}else{
-
-navigator.clipboard.writeText(text);
-alert("Score copied to clipboard!");
-}
-
-}
 render();
 
 </script>
