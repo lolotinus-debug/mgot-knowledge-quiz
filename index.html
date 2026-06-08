@@ -259,7 +259,11 @@ Share Score
 <div class="card">
 <h2>🏆 Leaderboard</h2>
 
-<button onclick="clearBoard()" style="
+<button
+id="resetBtn"
+onclick="clearBoard()"
+style="
+display:none;
 padding:10px 15px;
 margin-bottom:10px;
 border-radius:10px;
@@ -2219,12 +2223,13 @@ function start(){
 
 playerName =
 document.getElementById("name").value || "Anonymous";
+
+if(playerName === "Pepelectric"){
+    document.getElementById("resetBtn").style.display = "block";
+}
+
 selectedCategory =
-document.getElementById("category").value;  
-
-document.getElementById("start").classList.add("hidden");
-document.getElementById("quiz").classList.remove("hidden");
-
+document.getElementById("category").value;
 let pool=q;
 
 if(selectedCategory!=="All"){
