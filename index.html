@@ -202,6 +202,7 @@ color:white;
 ">
 
 <option value="All">All Categories</option>
+<option value="MGOT">MGOT</option>
 <option value="Science">Science</option>
 <option value="Geography">Geography</option>
 <option value="Technology">Technology</option>
@@ -225,9 +226,10 @@ color:white;
 <div class="top">
 <div>XP: <span id="xp">0</span></div>
 <div>Rank: <span id="rank">Beginner</span></div>
+<div>Question: <span id="counter">1/20</span></div>
 <div>Time: <span id="time">15</span></div>
 </div>
-
+  
 <div class="bar"><div id="progress"></div></div>
 
 <h2 id="question"></h2>
@@ -242,6 +244,14 @@ color:white;
 <p>Rank: <span id="finalRank"></span></p>
 <div id="badge" class="badge"></div>
 <button onclick="restart()">Play Again</button>
+
+<button onclick="shareResult()" style="
+margin-top:10px;
+background:#22c55e;
+color:white;
+">
+Share Score
+</button>
 </div>
 
 <!-- LEADERBOARD -->
@@ -2028,7 +2038,7 @@ b.innerText=x;
 b.onclick=()=>check(idx);
 box.appendChild(b);
 });
-
+document.getElementById("counter").innerText =`${i+1}/${gameQuestions.length}`;
 document.getElementById("progress").style.width=((i+1)/gameQuestions.length)*100+"%";}
 
 function check(idx){
@@ -2062,9 +2072,9 @@ document.getElementById("result").classList.remove("hidden");
 let rank="Beginner";
 let badge="Recruit";
 
-if(xp>=30){rank="Supporter";badge="🔥 Supporter";}
-if(xp>=60){rank="Warrior";badge="⚔️ Warrior";}
-if(xp>=90){rank="Legend";badge="👑 Legend";}
+if(xp>=50){rank="Supporter";badge="🔥 Supporter";}
+if(xp>=120){rank="Warrior";badge="⚔️ Warrior";}
+if(xp>=180){rank="Legend";badge="👑 Legend";}
 
 document.getElementById("finalXp").innerText=xp;
 document.getElementById("finalRank").innerText=rank;
@@ -2102,7 +2112,29 @@ list.innerHTML+=`<li>${p.name} - ${p.xp} XP (${p.rank})</li>`;
 function restart(){
 location.reload();
 }
+function shareResult(){
 
+const text =
+`I scored ${xp} XP in the MGOT Knowledge Quiz! 🚀
+
+Can you beat me?
+
+https://lolotinus-debug.github.io/mgot-knowledge-quiz/`;
+
+if(navigator.share){
+
+navigator.share({
+title:"MGOT Knowledge Quiz",
+text:text
+});
+
+}else{
+
+navigator.clipboard.writeText(text);
+alert("Score copied to clipboard!");
+}
+
+}
 render();
 
 </script>
