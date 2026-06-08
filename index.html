@@ -2240,11 +2240,14 @@ document.getElementById("time").innerText=time;
 if(time<=0){next();}
 },1000);
 
-let cur=gameQuestions[i];
-document.getElementById("question").innerHTML =
-<div style="font-size:14px;color:#22c55e;margin-bottom:8px"&gt; ${cur.cat}
+let cur = gameQuestions[i];
+
+document.getElementById("question").innerHTML = `
+<div style="font-size:14px;color:#22c55e;margin-bottom:8px">
+${cur.cat}
 </div>
-${cur.q};
+${cur.q}
+`;
 
 let box=document.getElementById("answers");
 box.innerHTML="";
