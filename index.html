@@ -2321,12 +2321,19 @@ render();
 }
 
 function render(){
-let board=JSON.parse(localStorage.getItem("mgot"))||[];
-let list=document.getElementById("board");
-list.innerHTML="";
-board.slice(0,10).forEach(p=>{
-list.innerHTML+=<li&gt;${p.name} - ${p.xp} XP (${p.rank})&lt;/li>;
-});
+    let board = JSON.parse(localStorage.getItem("mgot")) || [];
+
+    let list = document.getElementById("board");
+
+    list.innerHTML = "";
+
+    board.slice(0,10).forEach(p => {
+
+        list.innerHTML += `
+        <li>${p.name} - ${p.xp} XP (${p.rank})</li>
+        `;
+
+    });
 }
 
 function restart(){
